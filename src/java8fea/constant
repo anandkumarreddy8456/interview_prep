@@ -1,0 +1,64 @@
+### Stream API Methods
+- filter()
+- map()
+- flatMap()
+- forEach()
+- collect()
+- reduce()
+- sorted()
+- distinct()
+- peek()
+- limit()
+- skip()
+- anyMatch()
+- allMatch()
+- noneMatch()
+- findFirst()
+- findAny()
+
+### Optional Class Methods
+- empty()
+- of()
+- ofNullable()
+- isPresent()
+- ifPresent()
+- get()
+- orElse()
+- orElseGet()
+- orElseThrow()
+- map()
+- flatMap()
+
+### LocalDate, LocalTime, LocalDateTime Methods
+- now()
+- of()
+- parse()
+- plusDays()
+- minusDays()
+- plusMonths()
+- minusMonths()
+- plusYears()
+- minusYears()
+- plusHours()
+- minusHours()
+- with()
+- getYear()
+- getMonth()
+- getDayOfMonth()
+- getDayOfWeek()
+
+### Interfaces with Default and Static Methods
+- default
+- static
+
+### Functional Interfaces Methods
+- apply() (Function)
+- test() (Predicate)
+- accept() (Consumer)
+- get() (Supplier)
+
+### Miscellaneous Methods
+- foreach() (Iterates over elements)
+- max() (Finds the maximum value)
+- min() (Finds the minimum value)
+- count() (Counts the number of elements)
