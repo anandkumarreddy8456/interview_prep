@@ -17,8 +17,7 @@ public class BinarySearchClass {
 //			}
 //		}
 //		return -1;
-		String a1=new String();
-		Object a=new Object();
+		
 		int left=0;
 		int right=arr.length-1;
 		while(left<=right) {
