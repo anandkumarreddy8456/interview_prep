@@ -23,7 +23,7 @@ public class Java8ExamplesChatGPT {
        
         // flatMap()
         List<List<String>> listOfLists = Arrays.asList(
-                Arrays.asList("A", "B"), Arrays.asList("C", "D"));
+                Arrays.asList("A", "B","C"), Arrays.asList("C", "D","A"));
        System.out.println(listOfLists);
         List<String> flatList = listOfLists.stream()
                 .flatMap(List::stream)
@@ -37,7 +37,7 @@ public class Java8ExamplesChatGPT {
         
         System.out.println(numberSet);
 
-        // reduce()
+       
 //        int sum = numbers.stream().reduce(0, Integer::average);
         OptionalDouble ave=numbers.stream().mapToInt(Integer::intValue).average();
         
@@ -48,6 +48,10 @@ public class Java8ExamplesChatGPT {
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
         System.out.println(sortedNumbers);
+        
+        List<Integer> sortedNumbers2=numbers.stream().sorted((a,b)->a.compareTo(b)).toList();
+        System.out.println(sortedNumbers2);
+        
         List<Integer> asc=numbers.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         System.out.println(asc);
         // distinct()
@@ -61,11 +65,12 @@ public class Java8ExamplesChatGPT {
                 .peek(n -> System.out.println("Processing: " + n))
                 .collect(Collectors.toList());
         
+        
         // limit()
-        List<Integer> limitedNumbers = numbers.stream().sorted(Comparator.reverseOrder()).sorted()
+        List<Integer> limitedNumbers = numbers.stream().sorted(Comparator.reverseOrder())
                 .limit(5)
                 .collect(Collectors.toList());
-        System.out.println(limitedNumbers);
+        System.out.println(limitedNumbers+"limi");
         // skip()
         List<Integer> skippedNumbers = numbers.stream()
                 .skip(5)
@@ -92,8 +97,8 @@ public class Java8ExamplesChatGPT {
                 new Person("Bob", 25),
                 new Person("Charlie", 35)
             );
-        List<Person> reverse=people.stream().sorted(Comparator.comparing(Person::getName).reversed()).collect(Collectors.toList());
-        reverse.forEach(t->System.out.println(t.getName()));
+        List<Person> reverse=people.stream().sorted(Comparator.comparing(Person::getAge).reversed()).collect(Collectors.toList());
+        reverse.forEach((i)->System.out.println(i.getName()));
     }
 }
 class Person{
@@ -106,5 +111,8 @@ class Person{
 
     public String getName() {
         return name;
+    }
+    public int getAge() {
+    	return age;
     }
 }

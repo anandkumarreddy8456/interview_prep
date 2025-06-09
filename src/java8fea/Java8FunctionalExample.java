@@ -5,7 +5,7 @@ import java.util.function.*;
 public class Java8FunctionalExample {
     public static void main(String[] args) {
         Function<Integer, String> function = n -> "Number: " + n;
-        System.out.println(function.apply(5));
+        System.out.println(function.apply(6));
 
         Predicate<Integer> predicate = n -> n > 10;
         System.out.println(predicate.test(15));

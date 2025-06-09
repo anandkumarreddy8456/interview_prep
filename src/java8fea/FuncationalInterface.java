@@ -2,7 +2,7 @@ package java8fea;
 
 public class FuncationalInterface {
 	public static void main(String[] args) {
-		Collage collage=(a,b)->a>10 || b<5?1:0;
+		Collage collage=(a,b)-> a+b;
 		System.out.println(collage.addstudent(1,9));
 		School school=(a,b)->a*b;
 		System.out.println(school.multiple(23, 5));

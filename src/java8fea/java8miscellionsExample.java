@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+
 public class java8miscellionsExample {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);
@@ -20,5 +21,9 @@ public class java8miscellionsExample {
         // count()
         long count = numbers.stream().count();
         System.out.println(max+" "+min+" "+count);
+        
+        int arr[]=new int[] {5,4,5,43,2,43};
+        List<Integer> lis=Arrays.stream(arr).boxed().toList();
+        System.out.println(lis);
     }
 }

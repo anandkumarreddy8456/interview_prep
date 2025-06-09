@@ -25,6 +25,7 @@ public class Java8StaticExample implements MyInterface,MyInterface1 {
         Java8StaticExample obj = new Java8StaticExample();
         obj.defaultMethod();
         MyInterface.staticMethod();
+        
     }
 
 	@Override

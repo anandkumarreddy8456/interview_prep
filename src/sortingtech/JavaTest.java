@@ -13,19 +13,20 @@ public class JavaTest {
 		
 		
 		System.out.println(res);
-		sort.forEach(System.out::println);
-		int search=11;
+		sort.forEach(System.out::print);
+		System.out.println();
+		int search=100;
 		System.out.println(sort.contains(search)?"Available at "+sort.get(search):search+" is not available");
 		
 		HashMap<Integer,Integer> map=new HashMap<>();
 		for(int i=0;i<sort.size();i++) {
-			map.put(sort.get(i),i);
+			map.put(sort.get(i),sort.get(i)*10);
 		}
-		if(map.containsKey(search)) {
-			System.out.println(search+" is Available at "+sort.get(search));
+		System.out.println(map);
+		if(map.containsValue(search)) {
+			System.out.println(search+" is Available  ");
 		}else {
 			System.out.println(search+" is not Available  ");
 		}
 	}
-
 }
