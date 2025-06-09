@@ -6,14 +6,13 @@ public class ParenthesisValidator {
 	public static boolean isvalid(String s) {
 		Stack<Character> stack=new Stack<>();
 		
-		for(char ch:s.toCharArray()) {
-			if(ch=='(' || ch=='{' || ch=='[') {
+		for(Character ch:s.toCharArray()) {
+			if(ch =='(' || ch=='{'|| ch=='[') {
 				stack.push(ch);
-			}
-			else if( ch ==')' || ch=='}' || ch==']') {
+			}else if(ch==')' || ch=='}' || ch==']') {
 				if(stack.isEmpty()) return false;
-				char top=stack.pop();
-				if((ch==')' && top != '(') || ch=='}' && top !='{' || ch==']' && top != '[') {
+				char val=stack.pop();
+				if((val != '(' & ch==')') ||(val != '{' & ch=='}')|| (val != '[' & ch==']')) {
 					return false;
 				}
 			}
@@ -23,7 +22,7 @@ public class ParenthesisValidator {
 	}
 
 	public static void main(String[] args) {
-		String val="{[()}";
+		String val="{([])}";
 		System.out.print(isvalid(val));
 	}
 
