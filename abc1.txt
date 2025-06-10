@@ -1,0 +1,3 @@
+dAnand
+Thread A prints odd numbers.
+Thread B prints even numbers
