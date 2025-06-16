@@ -1,0 +1,80 @@
+
+import java.util.*;
+import java.util.stream.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+public class Main
+{
+	public static void main(String[] args) {
+	   // Map<String,Integer> maps=new HashMap<>();
+	   // maps.put("Anand",45);
+	   // maps.put("Mani",7);
+	   // maps.put("Ramesh",18);
+	   // maps.put("Raju",93);
+	   // System.out.println(maps.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).skip(1).map(Map.Entry::getKey).findFirst().get());
+            
+
+Transaction t1 = new Transaction(1, 249.0, LocalDate.of(2025, 5, 12));
+Transaction t2 = new Transaction(1, 350.0, LocalDate.of(2025, 5, 13));
+Transaction t3 = new Transaction(2, 450.5, LocalDate.of(2025, 5, 14));
+Transaction t4 = new Transaction(3, 299.9, LocalDate.of(2025, 5, 15));
+Transaction t5 = new Transaction(1, 512.0, LocalDate.of(2025, 5, 16));
+Transaction t6 = new Transaction(2, 278.3, LocalDate.of(2025, 5, 17));
+Transaction t7 = new Transaction(4, 689.0, LocalDate.of(2025, 5, 18));
+Transaction t8 = new Transaction(1, 400.75, LocalDate.of(2025, 5, 19));
+Transaction t9 = new Transaction(3, 525.6, LocalDate.of(2025, 5, 20));
+Transaction t10 = new Transaction(2, 310.0, LocalDate.of(2025, 5, 21));
+Transaction t11 = new Transaction(4, 480.8, LocalDate.of(2025, 5, 22));
+
+LocalDate today=LocalDate.now();
+LocalDate past30=today.minus(30,ChronoUnit.DAYS);
+
+    List<Transaction> transactions=Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11);
+    List<Transaction> required=transactions.stream().filter(q->!q.getDate().isBefore(past30))
+                                .collect(Collectors.groupingBy(Transaction::getId,Collectors.summingDouble(Transaction::getAmount)))
+                                .entrySet().stream()
+                                .map(entry->new Transaction(entry.getKey(),entry.getValue(),today))
+                                .sorted(Comparator.comparing(Transaction::getAmount).reversed())
+                                .limit(3).toList();
+    List<Transaction> exactMatch=transactions.stream().filter(q->q.getDate().isAfter(minus30))
+                                    .collect(Collectors.groupingBy(Transaction::getId,Collectors.collectingAndThen(Collectors.toList(),list->{
+                                        double amount=list.stream().mapToDouble(Transaction::getAmount).sum();
+                                        LocalDate date=list.get(0).getDate();
+                                        return new Transaction(list.get(0).getId(),amount,date);
+                                    }))).values().stream().sorted(Comparator.comparing(Transaction::getAmount).reversed()).limit(3).toList();
+                                    System.out.println(exactMatch);
+    System.out.println(required);
+	}
+}
+class Transaction{
+    private int id;
+    private double amount;
+    private LocalDate date;
+    
+    Transaction(int id,double amount,LocalDate date){
+        this.id=id;
+        this.amount=amount;
+        this.date=date;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id=id;
+    }
+    public double getAmount(){
+        return amount;
+    }
+    public void setAmount(){
+        this.amount=amount;
+    }
+    public LocalDate getDate(){
+        return date;
+    }
+    public void setDate(){
+        this.date=date;
+    }
+    public String toString(){
+        return "id: "+id +"amount : "+amount +" date"+date;
+    }
+}
